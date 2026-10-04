@@ -45,6 +45,11 @@
             margin-top: 20px;
             color: #aaa;
         }
+
+        #goofyMessage {
+            font-size: 18px;
+            color: #aaa;
+        }
     </style>
 </head>
 
@@ -52,6 +57,8 @@
 
     <div class="box">
         <h1>🎲 RANDOM INTERNET MACHINE</h1>
+
+        <p id="goofyMessage"></p>
 
         <p>
             You have absolutely no idea where this button will take you.
@@ -77,6 +84,38 @@
             "https://www.metmuseum.org/art/collection",
             "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         ];
+
+        const goofyMessages = [
+            "WHY ARE YOU HERE 💀",
+            "The internet has been notified.",
+            "🦅 GOOFY MODE ACTIVATED.",
+            "NASA has been notified.",
+            "Your computer is now slightly confused.",
+            "Congratulations. You found the website.",
+            "There are absolutely no ducks here.",
+            "DO NOT TRUST THE POTATO.",
+            "The council has decided you may proceed.",
+            "🚨 GOOFY DETECTED 🚨",
+            "Please remain calm. The internet is fine.",
+            "You have been selected for absolutely nothing.",
+            "ERROR: Seriousness not found.",
+            "The braincell is working overtime.",
+            "🗿",
+            "Rick Astley is somewhere out there.",
+            "SPACE.",
+            "This website was approved by a very small goblin.",
+            "Someone put a website here.",
+            "I have no idea what I'm doing.",
+            "WELCOME, INTERNET TRAVELER.",
+            "The button yearns to be pressed.",
+            "This is probably a terrible idea.",
+            "You have entered the goofy zone."
+        ];
+
+        const randomMessage =
+            goofyMessages[Math.floor(Math.random() * goofyMessages.length)];
+
+        document.getElementById("goofyMessage").textContent = randomMessage;
 
         function goRandom() {
             const randomIndex = Math.floor(Math.random() * websites.length);
