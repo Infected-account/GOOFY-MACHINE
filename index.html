@@ -200,6 +200,20 @@
                 return;
             }
 
+            
+            // THE 60TH CLICK
+if (clickCount === 60) {
+
+    document.getElementById("status").textContent =
+        "WHY.";
+
+    setTimeout(() => {
+        window.location.href =
+            "https://youtu.be/13pgxOCHKh0?si=n7oV9Y3oAdJFMXkg";
+    }, 1000);
+
+    return;
+}
 
             // Normal random destination
             const randomIndex =
