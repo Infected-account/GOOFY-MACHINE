@@ -148,7 +148,7 @@
             // Increase the click count
             clickCount++;
 
-            // Save the new count
+            // Save the new click count
             localStorage.setItem("goofyMachineClicks", clickCount);
 
             // Update the visible counter
@@ -166,6 +166,36 @@
                     window.location.href =
                         "https://youtu.be/rkbIjuVZ_54?si=JP6pHkomtjmxmyW_&t=1";
                 }, 1000);
+
+                return;
+            }
+
+
+            // THE 40TH CLICK
+            if (clickCount === 40) {
+
+                document.getElementById("status").textContent =
+                    "SIGNAL DETECTED.";
+
+                setTimeout(() => {
+                    window.location.href =
+                        "40.html";
+                }, 1000);
+
+                return;
+            }
+
+
+            // THE 50TH CLICK
+            if (clickCount === 50) {
+
+                document.getElementById("status").textContent =
+                    "YOU SHOULD NOT HAVE COME THIS FAR.";
+
+                setTimeout(() => {
+                    window.location.href =
+                        "https://youtu.be/8mcXpBb3VzU?si=ZoIbOzucmv3RqKHS";
+                }, 1500);
 
                 return;
             }
