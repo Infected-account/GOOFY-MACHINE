@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Internet Machine</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .box {
+            border: 2px solid white;
+            padding: 40px;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 20px;
+            cursor: pointer;
+            background: white;
+            color: black;
+            border: none;
+        }
+
+        button:hover {
+            background: #ccc;
+        }
+
+        #status {
+            margin-top: 20px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>🎲 RANDOM INTERNET MACHINE</h1>
+
+        <p>
+            You have absolutely no idea where this button will take you.
+        </p>
+
+        <button onclick="goRandom()">SEND ME SOMEWHERE RANDOM</button>
+
+        <p id="status"></p>
+    </div>
+
+    <script>
+        const websites = [
+            "https://en.wikipedia.org/wiki/Special:Random",
+            "https://neal.fun/",
+            "https://www.nasa.gov/",
+            "https://archive.org/",
+            "https://www.google.com/doodles",
+            "https://xkcd.com/",
+            "https://www.coolmathgames.com/",
+            "https://www.github.com/",
+            "https://www.nationalgeographic.com/",
+            "https://www.metmuseum.org/art/collection"
+        ];
+
+        function goRandom() {
+            const randomIndex = Math.floor(Math.random() * websites.length);
+            const destination = websites[randomIndex];
+
+            document.getElementById("status").textContent =
+                "DESTINATION SELECTED. GOOD LUCK.";
+
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 700);
+        }
+    </script>
+
+</body>
+</html>
