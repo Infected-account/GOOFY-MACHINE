@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>...</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #000;
+            color: #aaa;
+
+            font-family: monospace;
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+        }
+
+        #message {
+            font-size: 22px;
+            line-height: 1.8;
+
+            min-height: 180px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #button {
+            margin-top: 30px;
+
+            padding: 14px 28px;
+
+            background: #111;
+            color: #777;
+
+            border: 1px solid #333;
+
+            font-family: monospace;
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        #button:hover {
+            background: #222;
+            color: #aaa;
+        }
+
+        #warning {
+            margin-top: 30px;
+
+            font-size: 12px;
+            color: #333;
+        }
+
+        .glitch {
+            animation: glitch 0.15s infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(2px, -1px);
+            }
+
+            50% {
+                transform: translate(-2px, 1px);
+            }
+
+            75% {
+                transform: translate(1px, 2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="message"></div>
+
+        <button id="button" class="hidden">
+            PRESS THE BUTTON
+        </button>
+
+        <div id="warning"></div>
+
+    </div>
+
+
+    <script>
+
+        const message = document.getElementById("message");
+        const button = document.getElementById("button");
+        const warning = document.getElementById("warning");
+
+
+        function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+        async function begin() {
+
+            await wait(1200);
+
+            message.textContent = "SIGNAL DETECTED.";
+
+            await wait(2200);
+
+            message.textContent =
+                "40 CLICKS RECORDED.";
+
+            await wait(2200);
+
+            message.textContent =
+                "YOU WERE NOT SUPPOSED TO FIND THIS.";
+
+            await wait(3000);
+
+            message.textContent =
+                "...";
+
+            await wait(2500);
+
+            message.textContent =
+                "IT KNOWS YOU ARE HERE.";
+
+            await wait(3500);
+
+            message.classList.add("glitch");
+
+            message.textContent =
+                "DO NOT PRESS THE BUTTON.";
+
+            await wait(3000);
+
+            message.classList.remove("glitch");
+
+            button.classList.remove("hidden");
+
+            warning.textContent =
+                "THE MACHINE IS WAITING.";
+
+        }
+
+
+        button.addEventListener("click", () => {
+
+            window.location.href = "index.html";
+
+        });
+
+
+        begin();
+
+    </script>
+
+</body>
+</html>
