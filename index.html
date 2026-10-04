@@ -91,7 +91,6 @@
             "https://youtu.be/ECf9z2CKHhg?si=Vqc5mepMIP688tuT",
             "https://youtu.be/XOmW7gm25_8?si=TzSUdTk9lV29H9Am",
             "https://youtu.be/C1x5G9EguIg?si=mFFwiXr3PbeeokfC",
-            "https://youtu.be/rkbIjuVZ_54?si=JP6pHkomtjmxmyW_&t=1",
         ];
 
         const goofyMessages = [
@@ -126,19 +125,41 @@
 
         document.getElementById("goofyMessage").textContent = randomMessage;
 
+
         function goRandom() {
 
             
-            const secretRoll = Math.floor(Math.random() * 5000);
+            let clickCount =
+                parseInt(localStorage.getItem("goofyMachineClicks")) || 0;
 
-            if (secretRoll === 0) {
-                window.location.href = "creator-note.html";
+           
+            clickCount++;
+
+           
+            localStorage.setItem("goofyMachineClicks", clickCount);
+
+
+           
+            if (clickCount === 20) {
+
+                document.getElementById("status").textContent =
+                    "SOMETHING HAS BEEN FOUND";
+
+                setTimeout(() => {
+                    window.location.href =
+                        "https://youtu.be/rkbIjuVZ_54?si=JP6pHkomtjmxmyW_&t=1";
+                }, 1000);
+
                 return;
             }
 
-            
-            const randomIndex = Math.floor(Math.random() * websites.length);
-            const destination = websites[randomIndex];
+
+           
+            const randomIndex =
+                Math.floor(Math.random() * websites.length);
+
+            const destination =
+                websites[randomIndex];
 
             document.getElementById("status").textContent =
                 "DESTINATION SELECTED. GOOD LUCK.";
