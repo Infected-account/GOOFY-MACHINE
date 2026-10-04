@@ -215,6 +215,21 @@ if (clickCount === 60) {
     return;
 }
 
+
+        // THE 70TH CLICK
+if (clickCount === 70) {
+
+    document.getElementById("status").textContent =
+        "YOUR MOVE.";
+
+    setTimeout(() => {
+        window.location.href =
+            "https://www.chess.com/";
+    }, 1000);
+
+    return;
+}
+            
             // Normal random destination
             const randomIndex =
                 Math.floor(Math.random() * websites.length);
