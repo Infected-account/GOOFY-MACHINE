@@ -50,6 +50,12 @@
             font-size: 18px;
             color: #aaa;
         }
+
+        #clickCounter {
+            margin-top: 15px;
+            color: #777;
+            font-size: 16px;
+        }
     </style>
 </head>
 
@@ -65,6 +71,8 @@
         </p>
 
         <button onclick="goRandom()">SEND ME SOMEWHERE RANDOM</button>
+
+        <p id="clickCounter">CLICKS: 0</p>
 
         <p id="status"></p>
     </div>
@@ -126,20 +134,29 @@
         document.getElementById("goofyMessage").textContent = randomMessage;
 
 
+        // Load the saved click count
+        let clickCount =
+            parseInt(localStorage.getItem("goofyMachineClicks")) || 0;
+
+        // Display the saved count when the page loads
+        document.getElementById("clickCounter").textContent =
+            "CLICKS: " + clickCount;
+
+
         function goRandom() {
 
-            
-            let clickCount =
-                parseInt(localStorage.getItem("goofyMachineClicks")) || 0;
-
-           
+            // Increase the click count
             clickCount++;
 
-           
+            // Save the new count
             localStorage.setItem("goofyMachineClicks", clickCount);
 
+            // Update the visible counter
+            document.getElementById("clickCounter").textContent =
+                "CLICKS: " + clickCount;
 
-           
+
+            // THE 20TH CLICK
             if (clickCount === 20) {
 
                 document.getElementById("status").textContent =
@@ -154,7 +171,7 @@
             }
 
 
-           
+            // Normal random destination
             const randomIndex =
                 Math.floor(Math.random() * websites.length);
 
