@@ -243,6 +243,20 @@ if (clickCount === 80) {
 
     return;
 }
+
+
+// THE 90TH CLICK
+if (clickCount === 90) {
+
+    document.getElementById("status").textContent =
+        "welcome to space.";
+
+    setTimeout(() => {
+        window.location.href = "90.html";
+    }, 1000);
+
+    return;
+}
             
             // Normal random destination
             const randomIndex =
