@@ -160,7 +160,13 @@ function startShootingStars() {
 // MAIN SEQUENCE
 // =========================
 
-async function begin() {
+async function begin()
+    
+    line3.classList.add("show"); {
+   
+    await wait(3500);
+
+    document.getElementById("returnButton").classList.add("show");
 
     createStars();
 
