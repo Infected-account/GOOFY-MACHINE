@@ -1,217 +1,127 @@
-const starsContainer =
-    document.getElementById("stars");
+const stars = document.getElementById("stars");
+const shootingStars = document.getElementById("shootingStars");
 
-const shootingStarsContainer =
-    document.getElementById("shootingStars");
-
-const line1 =
-    document.getElementById("line1");
-
-const line2 =
-    document.getElementById("line2");
-
-const line3 =
-    document.getElementById("line3");
+const line1 = document.getElementById("line1");
+const line2 = document.getElementById("line2");
+const line3 = document.getElementById("line3");
+const returnButton = document.getElementById("returnButton");
 
 
-// =========================
-// CREATE STARS
-// =========================
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+/* =========================
+   CREATE STARS
+========================= */
 
 function createStars() {
 
-    const starCount = 220;
+    for (let i = 0; i < 220; i++) {
 
-    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement("div");
 
-        const star =
-            document.createElement("div");
-
-        star.classList.add("star");
-
-
-        const size =
-            Math.random() * 2.5 + 0.5;
-
-
-        const x =
-            Math.random() * 100;
-
-
-        const y =
-            Math.random() * 100;
-
-
-        const twinkleTime =
-            Math.random() * 4 + 2;
-
-
-        const minimumOpacity =
-            Math.random() * 0.2 + 0.1;
-
-
-        star.style.width =
-            size + "px";
-
-        star.style.height =
-            size + "px";
+        star.className = "star";
 
         star.style.left =
-            x + "%";
+            Math.random() * 100 + "%";
 
         star.style.top =
-            y + "%";
-
-
-        star.style.setProperty(
-            "--twinkle-time",
-            twinkleTime + "s"
-        );
-
-
-        star.style.setProperty(
-            "--min-opacity",
-            minimumOpacity
-        );
-
+            Math.random() * 100 + "%";
 
         star.style.animationDelay =
             Math.random() * 5 + "s";
 
+        star.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
 
-        starsContainer.appendChild(star);
-
+        stars.appendChild(star);
     }
-
 }
 
 
-// =========================
-// WAIT FUNCTION
-// =========================
-
-function wait(milliseconds) {
-
-    return new Promise(resolve => {
-
-        setTimeout(resolve, milliseconds);
-
-    });
-
-}
-
-
-// =========================
-// SHOOTING STAR
-// =========================
+/* =========================
+   SHOOTING STARS
+========================= */
 
 function createShootingStar() {
 
-    const shootingStar =
-        document.createElement("div");
+    const star = document.createElement("div");
 
-    shootingStar.classList.add(
-        "shooting-star"
-    );
+    star.className = "shooting-star";
 
-
-    shootingStar.style.left =
+    star.style.left =
         Math.random() * 100 + "%";
 
+    star.style.top =
+        Math.random() * 50 + "%";
 
-    shootingStar.style.top =
-        Math.random() * 60 + "%";
-
-
-    shootingStarsContainer.appendChild(
-        shootingStar
-    );
-
+    shootingStars.appendChild(star);
 
     setTimeout(() => {
-
-        shootingStar.remove();
-
-    }, 1600);
-
+        star.remove();
+    }, 1500);
 }
 
-
-// =========================
-// RANDOM SHOOTING STARS
-// =========================
 
 function startShootingStars() {
 
     setInterval(() => {
 
-        if (Math.random() < 0.65) {
-
+        if (Math.random() < 0.35) {
             createShootingStar();
-
         }
 
-    }, 3500);
-
+    }, 2500);
 }
 
 
-// =========================
-// MAIN SEQUENCE
-// =========================
+/* =========================
+   MAIN SEQUENCE
+========================= */
 
-async function begin()
-    
-    line3.classList.add("show"); {
-   
-    await wait(3500);
-
-    document.getElementById("returnButton").classList.add("show");
+async function begin() {
 
     createStars();
 
     startShootingStars();
 
 
-    // Wait for the universe to appear
-
     await wait(3500);
 
-
-    line1.textContent =
-        "SIGNAL RESTORED.";
+    line1.textContent = "SIGNAL RESTORED.";
 
     line1.classList.add("show");
 
 
     await wait(2500);
 
-
-    line2.textContent =
-        "90 CLICKS.";
+    line2.textContent = "90 CLICKS.";
 
     line2.classList.add("show");
 
 
     await wait(3000);
 
-
-    line3.textContent =
-        "YOU HAVE REACHED THE STARS.";
+    line3.textContent = "YOU HAVE REACHED THE STARS.";
 
     line3.classList.add("show");
 
 
+    await wait(3500);
+
+    returnButton.classList.add("show");
+
+
     await wait(5000);
 
-
-    // One particularly dramatic shooting star
-
     createShootingStar();
-
 }
 
 
-// Start everything
+/* =========================
+   START
+========================= */
 
 begin();
