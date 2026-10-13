@@ -187,29 +187,29 @@
         document.getElementById("goofyMessage").textContent = randomMessage;
 
 
-        // Load the saved click count
+
         let clickCount =
             parseInt(localStorage.getItem("goofyMachineClicks")) || 0;
 
-        // Display the saved count when the page loads
+
         document.getElementById("clickCounter").textContent =
             "CLICKS: " + clickCount;
 
 
         function goRandom() {
 
-            // Increase the click count
+
             clickCount++;
 
-            // Save the new click count
+
             localStorage.setItem("goofyMachineClicks", clickCount);
 
-            // Update the visible counter
+
             document.getElementById("clickCounter").textContent =
                 "CLICKS: " + clickCount;
 
 
-            // THE 20TH CLICK
+
             if (clickCount === 20) {
 
                 document.getElementById("status").textContent =
@@ -224,7 +224,7 @@
             }
 
 
-            // THE 40TH CLICK
+
             if (clickCount === 40) {
 
                 document.getElementById("status").textContent =
@@ -239,7 +239,7 @@
             }
 
 
-            // THE 50TH CLICK
+
             if (clickCount === 50) {
 
                 document.getElementById("status").textContent =
@@ -254,7 +254,7 @@
             }
 
             
-            // THE 60TH CLICK
+
 if (clickCount === 60) {
 
     document.getElementById("status").textContent =
@@ -269,7 +269,7 @@ if (clickCount === 60) {
 }
 
 
-        // THE 70TH CLICK
+
 if (clickCount === 70) {
 
     document.getElementById("status").textContent =
@@ -283,7 +283,7 @@ if (clickCount === 70) {
     return;
 }
 
- // THE 80TH CLICK
+
 if (clickCount === 80) {
 
     document.getElementById("status").textContent =
@@ -298,7 +298,7 @@ if (clickCount === 80) {
 }
 
 
-// THE 90TH CLICK
+
 if (clickCount === 100) {
 
     document.getElementById("status").textContent =
@@ -311,7 +311,7 @@ if (clickCount === 100) {
     return;
 }
             
-            // Normal random destination
+            
             const randomIndex =
                 Math.floor(Math.random() * websites.length);
 
